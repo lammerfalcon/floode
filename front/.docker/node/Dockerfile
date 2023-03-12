@@ -10,7 +10,7 @@ USER root
 
 RUN apk --no-cache add shadow && usermod -u $DOCKER_USER_ID node && groupmod -g $DOCKER_GROUP_ID node
 
-COPY front/package*.json ./
+COPY package*.json ./
 
 RUN npm install -g npm@latest
 RUN npm install -g npm-check-updates@latest
