@@ -1,16 +1,11 @@
 <template>
-  <div>
-    <div
-      class="px-5 flex gap-5 items-center h-14 bg-floode-ocean-blue-300 text-floode-lighten sticky top-0 w-full"
-    >
-      <span>Floode</span>
-      <span>|</span>
-      <NuxtLink to="posts">to posts</NuxtLink>
+  <div class="h-full">
+    <layout-header></layout-header>
+    <div class="flex m-3 gap-3 flex-shrink h-[calc(100%-76px)]">
+      <layout-aside class="sticky top-[68px] self-start"></layout-aside>
+      <div class="rounded-md overflow-hidden">
+        <slot class="h-full" />
+      </div>
     </div>
-    <slot />
   </div>
 </template>
-
-<script></script>
-
-<style scoped></style>

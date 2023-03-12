@@ -4,5 +4,6 @@ export default defineNuxtConfig({
     // ...
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
+    // "@sidebase/nuxt-auth",
   ],
 });
