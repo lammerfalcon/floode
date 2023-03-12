@@ -38,7 +38,7 @@ services:
         container_name: f-nginx
         working_dir: /var/www/floode
         volumes:
-            - ./back/public:/var/www/floode
+            - ./back:/var/www/floode
             - ./back/.docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
         ports:
             - "${CUSTOM_NGINX_PORT:-80}:80"
@@ -82,26 +82,26 @@ services:
             - ./front:/var/www/floode
         restart: unless-stopped
 
-    redis:
-        image: redis:7-alpine
-        command:
-            - 'redis-server'
-            - '--save'  # no save to disk
-            - ''
-            - '--appendonly'
-            - 'no'
-            - '--port'
-            - "${CUSTOM_REDIS_PORT:-6379}"
-        expose:
-            - "${CUSTOM_REDIS_PORT:-6379}"
-        ports:
-            - "${CUSTOM_REDIS_PORT:-6379}:6379"
-        container_name: f-redis
-        restart: unless-stopped
+#    redis:
+#        image: redis:7-alpine
+#        command:
+#            - 'redis-server'
+#            - '--save'  # no save to disk
+#            - ''
+#            - '--appendonly'
+#            - 'no'
+#            - '--port'
+#            - "${CUSTOM_REDIS_PORT:-6379}"
+#        expose:
+#            - "${CUSTOM_REDIS_PORT:-6379}"
+#        ports:
+#            - "${CUSTOM_REDIS_PORT:-6379}:6379"
+#        container_name: f-redis
+#        restart: unless-stopped
 
 networks:
     default:
 volumes:
     mysql:
     mysql-testing:
-    redis:
+#    redis:

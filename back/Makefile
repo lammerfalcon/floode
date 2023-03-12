@@ -43,8 +43,6 @@ init: env up build install start
 
 php-bash:
 	docker exec -it --user=www-data f-php bash
-node-sh:
-	docker exec -it --user=node f-node sh
 
 #-----------------------------------------------------------
 # Installation
@@ -53,8 +51,9 @@ node-sh:
 # Laravel
 install:
 	docker-compose stop
-	docker-compose up -d redis
+	#docker-compose up -d redis
 	docker-compose run -u `id -u` --rm php composer i
 	docker-compose run -u `id -u` --rm php php artisan key:generate
 	docker-compose run -u `id -u` --rm php php artisan migrate:fresh --seed
 	docker-compose run -u `id -u` --rm php php artisan storage:link
+	docker-compose run -u `id -u` --rm php php artisan pass:i
