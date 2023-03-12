@@ -1,9 +1,3 @@
 export default defineNuxtConfig({
-  // ...
-  modules: [
-    // ...
-    "@nuxtjs/tailwindcss",
-    "@pinia/nuxt",
-    // "@sidebase/nuxt-auth",
-  ],
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
 });

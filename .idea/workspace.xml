@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="befffdd5-149a-4e2d-9358-a92b016f8555" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/front/components/layout/LayoutAside.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/components/layout/LayoutHeader.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/pages/alerts/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/pages/hello.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/pages/login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/api/auth/[...].ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/app.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/layouts/custom.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/layouts/custom.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/layouts/default.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/front/nuxt.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/front/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/front/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/api/auth/[...].ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/auth/[...].ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +138,7 @@
       <workItem from="1678628434560" duration="1393000" />
       <workItem from="1678629841548" duration="11729000" />
       <workItem from="1678642677154" duration="2689000" />
-      <workItem from="1678646450003" duration="17217000" />
+      <workItem from="1678646450003" duration="17614000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1678642076718</created>
@@ -174,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678642471799</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="init">
+      <created>1678663965521</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678663965521</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
