@@ -1,0 +1,107 @@
+version: '3.8'
+services:
+    mysql:
+        image: mysql:8.0.30
+        container_name: f-db
+        working_dir: /var/www/floode
+        command: --default-authentication-plugin=mysql_native_password
+        volumes:
+            - mysql:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ALLOW_EMPTY_PASSWORD: 0
+            MYSQL_ROOT_HOST: '%'
+            PMA_HOST: mysql
+        ports:
+            - "${CUSTOM_DB_PORT:-3306}:3306"
+        restart: unless-stopped
+
+    mysql-testing:
+        image: mysql:8.0.30
+        container_name: f-db-testing
+        environment:
+            MYSQL_DATABASE: ${TESTING_DB_DATABASE}
+            MYSQL_USER: ${TESTING_DB_PASSWORD}
+            MYSQL_PASSWORD: ${TESTING_DB_USERNAME}
+            MYSQL_ALLOW_EMPTY_PASSWORD: 0
+            PMA_HOST: mysql-testing
+        volumes:
+            - mysql-testing:/var/lib/mysql
+        ports:
+            - "${CUSTOM_TESTING_DB_PORT:-3307}:3306"
+        restart: unless-stopped
+
+    nginx:
+        image: nginx:stable-alpine
+        container_name: f-nginx
+        working_dir: /var/www/floode
+        volumes:
+            - ./back/public:/var/www/floode/public
+            - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - "${CUSTOM_NGINX_PORT:-80}:80"
+        depends_on:
+            - php
+        restart: unless-stopped
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+
+    php:
+        build:
+            context: .
+            dockerfile: .docker/php/Dockerfile
+            args:
+                DOCKER_USER_ID: ${DOCKER_USER_ID}
+                DOCKER_GROUP_ID: ${DOCKER_GROUP_ID}
+        container_name: f-php
+        working_dir: /var/www/floode
+        volumes:
+            - ./back:/var/www/floode
+            - ./docker/php/php-ini-overrides.ini:/usr/local/etc/php/conf.d/docker-php-ext-overrides.ini
+        depends_on:
+            - mysql
+            - mysql-testing
+        restart: unless-stopped
+    #        command: sh -c "php artisan migrate:fresh --seed --env=testing"
+
+    node:
+        build:
+            context: .
+            dockerfile: .docker/node/Dockerfile
+            args:
+                DOCKER_USER_ID: ${DOCKER_USER_ID}
+                DOCKER_GROUP_ID: ${DOCKER_GROUP_ID}
+                CUSTOM_VITE_PORT: '${CUSTOM_VITE_PORT:-5173}'
+        container_name: f-node
+        working_dir: /var/www/floode
+        ports:
+            - '${CUSTOM_VITE_PORT:-5173}:5173'
+        volumes:
+            - ./front:/var/www/floode
+        restart: unless-stopped
+
+    redis:
+        image: redis:7-alpine
+        command:
+            - 'redis-server'
+            - '--save'  # no save to disk
+            - ''
+            - '--appendonly'
+            - 'no'
+            - '--port'
+            - "${CUSTOM_REDIS_PORT:-6379}"
+        expose:
+            - "${CUSTOM_REDIS_PORT:-6379}"
+        ports:
+            - "${CUSTOM_REDIS_PORT:-6379}:6379"
+        container_name: f-redis
+        restart: unless-stopped
+
+networks:
+    default:
+volumes:
+    mysql:
+    mysql-testing:
+    redis:
