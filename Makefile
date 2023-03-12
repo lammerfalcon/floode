@@ -38,6 +38,7 @@ rebuild: build up
 
 env:
 	[ -f .env ] && echo .env exists || cp .env.example .env
+	[ -f back/.env ] && echo .env exists || cp back/.env.example back/.env
 
 init: env up build install-front install-back start
 
